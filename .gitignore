@@ -4,3 +4,5 @@ Task1/graph.inp
 Task1/graph.out
 Task1/result/sample0.out
 Task1/sample/sample0.inp
+*.out
+*.inp
