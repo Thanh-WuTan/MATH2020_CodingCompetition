@@ -17,30 +17,30 @@ for idx, filename in enumerate(listInp):
     counter = filename.split('.')[1].split('/')[-1]
     counter = int(counter[6:])
 
-
-    
-
     sys.stdin = open(filename, 'r')
 
+    # Read input
+    n, m, k =  map(int,(input().split()))
+
+    # Init
     dx = np.array([0, -1, 0, 1])
     dy = np.array([-1, 0, 1, 0])
-    dd = np.array([2, 3, 0, 1])
-
-    n, m, k =  map(int,(input().split()))
-    vis = np.zeros((n, m),  dtype=int)
+    dd = np.array([2, 3, 0, 1]) 
+    is_visited = np.zeros((n, m),  dtype=int) 
     trace = np.zeros((n, m),  dtype=int)
-
 
     for i in range(k):
         u, v = map(int, (input().split()))
-        vis[u][v] = 1
-        
+        is_visited[u][v] = 1 # Grid (u, v) is blocked
+
     sx, sy, ex, ey = map(int, (input().split()))
 
+    # Bfs
     Q = []
-    Q.append((sx, sy))
-    vis[sx][sy] = 1
+    Q.append((sx, sy)) 
     l, r = 0, 0
+    is_visited[sx][sy] = 1
+    
     while l <= r:
         u, v = Q[l][0], Q[l][1]
         l+= 1
@@ -49,17 +49,17 @@ for idx, filename in enumerate(listInp):
         for i in range(4):
             x = u + dx[i]
             y = v + dy[i]
-        
-            if x < 0 or x >= n or y < 0 or y >= m:
+            if x < 0 or x >= n or y < 0 or y >= m: # Out of the boundary
                 continue 
-            if vis[x][y]:
+            if is_visited[x][y]: # is already visted or is blocked
                 continue
             
-            vis[x][y] = True
+            is_visited[x][y] = True
             trace[x][y] = dd[i]
             Q.append((x, y))
             r+= 1
-        
+    
+    # Trace the route
     res = []
     x, y = ex, ey
     res.append((x, y)) 
