@@ -59,7 +59,7 @@ for idx, filename in enumerate(listInp):
             Q.append((x, y))
             r+= 1
     
-    # Trace the route
+    # Trace the path
     res = []
     x, y = ex, ey
     res.append((x, y)) 
