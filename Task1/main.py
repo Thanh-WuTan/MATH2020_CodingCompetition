@@ -78,6 +78,6 @@ for idx, filename in enumerate(listInp):
         os.mkdir('./result')
     sourceFile = open(f'./result/sample{counter}.out', 'w')
     print(len(res), file = sourceFile)
-    for i in res:
+    for i in res[::-1]:
         print(*i, file = sourceFile)
     sourceFile.close()
