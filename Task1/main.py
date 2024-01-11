@@ -1,21 +1,16 @@
 import sys
-
+import numpy as np
 
 sys.stdin = open('graph.inp', 'r')
 sys.stdout = open('graph.out', 'w')
 
-dx = [0, -1, 0, 1]
-dy = [-1, 0, 1, 0]
-dd = [2, 3, 0, 1]
+dx = np.array([0, -1, 0, 1])
+dy = np.array([-1, 0, 1, 0])
+dd = np.array([2, 3, 0, 1])
 
 n, m, k =  map(int,(input().split()))
-vis = []  
-trace = []
-for i in range(n):
-    tmp = [0] * m
-    vis.append(tmp)
-    tmp = [-1] * m
-    trace.append(tmp)
+vis = np.zeros((n, m),  dtype=int)
+trace = np.zeros((n, m),  dtype=int)
 
 
 for i in range(k):
