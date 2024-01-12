@@ -12,4 +12,4 @@ This task involves a grid with cells assigned weights. The objective is to deter
 (Note: to be updated.)
 
 # Scoreboard
-The scoreboard is available at: dangkh.github.io
+The scoreboard is available at: https://dangkh.github.io
