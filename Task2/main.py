@@ -5,13 +5,6 @@ import heapq as hq
 
 sys.stdin = open('sample_task2.inp', 'r')
 sys.stdout = open('sample_task2.out', 'w')
-# listInp = []
-# for dirname, _, filenames in os.walk('./sample/'):
-#     for filename in filenames:
-#         if filename[-3:]  == 'inp':
-#             listInp.append(os.path.join(dirname, filename))
-# listInp = sorted(listInp)
-# for idx, filename in enumerate(listInp):
 
 def main():    
     n, m, k =  map(int,(input().split()))
@@ -65,7 +58,7 @@ def main():
                 trace[x][y] = dd[i]
                 hq.heappush(heap, (current_distance + w, (x, y)))
             
-    print(distance[ex][ey])
+    # Trace the path
     path = []
     u, v = ex, ey
     path.append((u, v))
@@ -81,6 +74,9 @@ def main():
         path.append((u, v))
         if (u == sx and v == sy):
             break
+
+    # Output
+    print(distance[ex][ey])
     for cell in path[::-1]:
         print(cell[0], cell[1])
 main()
