@@ -28,14 +28,11 @@ def main():
         u, v, w = map(int, (input().split()))
         weight[u][v] = w 
     j, k = map(int, (input().split()))
-    current_cell = (1, 2) 
+
     # dijkstra
     heap = [(0, (sx, sy))]
-    
     while heap:
         current_distance, current_cell = hq.heappop(heap)
-        
-     
         if current_cell == (ex, ey):
             break
         u, v = current_cell[0], current_cell[1]
