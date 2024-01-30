@@ -11,11 +11,9 @@ def main():
 
     dx = np.array([0, -1, 0, 1])
     dy = np.array([-1, 0, 1, 0])
-    dd = np.array([2, 3, 0, 1]) 
 
     distance = np.full((n, m), int(1e9), dtype=int) 
     weight = np.full((n, m), -1, dtype=int)
-    trace = np.zeros((n, m),  dtype=int)
 
     for i in range(k):
         u, v = map(int, (input().split())) 
@@ -28,14 +26,10 @@ def main():
         u, v, w = map(int, (input().split()))
         weight[u][v] = w 
     j, k = map(int, (input().split()))
-    current_cell = (1, 2) 
     # dijkstra
     heap = [(0, (sx, sy))]
-    
     while heap:
         current_distance, current_cell = hq.heappop(heap)
-        
-     
         if current_cell == (ex, ey):
             break
         u, v = current_cell[0], current_cell[1]
@@ -55,28 +49,36 @@ def main():
             w = k * w + 1 # change the weight to k * w + 1
             if current_distance + w < distance[x][y]:
                 distance[x][y] = current_distance + w
-                trace[x][y] = dd[i]
                 hq.heappush(heap, (current_distance + w, (x, y)))
             
     # Trace the path
     path = []
     u, v = ex, ey
     path.append((u, v))
-    cnt = 0
     while True:
-        cnt+= 1
-        if cnt == 21:
+        if u == sx and v == sy:
             break
-        dir = trace[x][y]
-        x = u + dx[dir]
-        y = v + dy[dir]
-        u, v = x , y
-        path.append((u, v))
-        if (u == sx and v == sy):
-            break
+        w = weight[u][v]
+        if w == -2:
+            assert(False)
+        if w == -1:
+            w = j
+        w = k * w + 1
+        for i in range(4):
+            x = u + dx[i]
+            y = v + dy[i]
+            if x < 0 or x >= n or y < 0 or y >= n:
+                continue
+            if distance[x][y] + w == distance[u][v]:
+                u, v = x, y
+                path.append((u, v))
+                break
+
+
 
     # Output
     print(distance[ex][ey])
     for cell in path[::-1]:
         print(cell[0], cell[1])
+    
 main()
