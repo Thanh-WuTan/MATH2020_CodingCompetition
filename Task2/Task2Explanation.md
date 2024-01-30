@@ -14,7 +14,7 @@
         ex, ey
 ```
 
-- So the total cost = `s + k * Σ(weight(xi, yi))` where `x(s), y(s) = ex, ey` ; `x1, y1 = sx, sy`
-However this form cannot use in the Dijkstra Algorithm.
+- The total cost would be `s + k * Σ(weight(xi, yi))`, where  `x1, y1 = sx, sy` and `x(s), y(s) = ex, ey`
+.However this form cannot use in the Dijkstra Algorithm.
 - Observe that, `s + k * Σ(weight(xi, yi))` equivalent with `Σ(1 + k * weight(xi, yi))` 
 4. **Final solution**: As reasoning above, if we change the weight of each cell to `1 + k * original weight`, the most optimal path found by Dijikstra with the new weight will achieve the goal of the problem.
