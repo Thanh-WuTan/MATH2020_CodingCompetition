@@ -80,10 +80,3 @@ The provided code implements a Breadth-First Search (BFS) algorithm to find the 
    - The code generates an output file for each input file in the './result/' directory.
    - The output file contains the length of the path and the coordinates of each cell in the path, printed in reverse order.
 
-**Reasoning:**
-BFS is chosen for this task because it efficiently explores paths in a systematic order, ensuring the shortest path is found. The use of a queue (`Q`) helps in exploring cells level by level, and the trace array allows reconstructing the path once the destination is reached. The code also ensures that out-of-bound and already visited or blocked cells are not explored, optimizing the search process. The resulting path is then printed to an output file in the required format. Overall, BFS is a suitable choice for finding the most efficient path in a grid-like structure.
-
-
-
-
-
