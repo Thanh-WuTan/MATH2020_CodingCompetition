@@ -1,6 +1,7 @@
 import sys
 import numpy as np
 import heapq as hq
+import os 
 
 def main():    
     n, m, k =  map(int,(input().split()))
@@ -70,7 +71,24 @@ def main():
     for cell in path[::-1]:
         print(cell[0], cell[1])
 
+listInp = []
+for dirname, _, filenames in os.walk('./sample/'):
+    for filename in filenames:
+        if filename[-3:]  == 'inp':
+            listInp.append(os.path.join(dirname, filename))
+listInp = sorted(listInp)
 
-sys.stdin = open('sample_task2.inp', 'r')
-sys.stdout = open('sample_task2.out', 'w') 
-main()
+for idx, filename in enumerate(listInp):
+    '''
+    this is read file template
+    '''
+    input_file = filename
+    counter = filename.split('.')[1].split('/')[-1]
+    counter = int(counter[6:])
+
+    sys.stdin = open(input_file, 'r')
+
+    if not os.path.exists('./result'):
+        os.mkdir('./result')
+    sys.stdout = open(f'./result/sample{counter}.out', 'w') 
+    main()
