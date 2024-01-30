@@ -79,22 +79,24 @@ j, k = map(int, input().split())
                 hq.heappush(heap, (current_distance + w, (x, y)))  
   ```
 
-  - The algorithm starts with a priority queue (`heap`) containing a tuple `(0, (sx, sy))`. This tuple represents the source cell `(sx, sy)` and its distance from itself, which is 0.
+1. **Problem**: The code is designed to solve the problem of finding the shortest path in a grid from a source cell `(sx, sy)` to a destination cell `(ex, ey)`. The grid can have blocked cells and cells with different weights. The cost of a path is defined as `s + k * c`, where `s` is the number of steps, `k` is a constant, and `c` is the sum of the weights of the cells in the path.
 
-  - The main loop continues as long as there are cells in the priority queue. In each iteration, the cell with the smallest known distance (`current_distance`) is extracted from the priority queue. The tuple `(current_distance, current_cell)` represents the current state of the algorithm.
+2. **Approach**: The code uses Dijkstra's algorithm to find the shortest path. Dijkstra's algorithm is a greedy algorithm that finds the path with the minimum distance from the source to the destination. However, the cost `s + k * c` cannot be used directly in Dijkstra's algorithm, because it is not consistent with the principle of optimality. That is, the optimal path may not be composed of optimal subpaths.
 
-  - It checks whether the current cell `current_cell` has already been processed. If it has, the iteration is skipped because a shorter path to that cell has already been found.
+3. **Transformation**: Assume that the optimaized road includes the s cells with the coordinate form as below:
+```
+        sx, sy
+        x2, x2
+        x3, y3
+        ...
+    x(s-1), y(s-1)
+        ex, ey
+```
 
-  - The algorithm explores the four possible neighboring cells of the current cell `(u, v)`.
-
-  -  It checks whether the neighboring cell `(x, y)` is within the grid boundaries and is not blocked. If the cell is out of bounds or blocked, the iteration is skipped.
-
-  -  It retrieves the weight of the neighboring cell `(x, y)`. If the cell is unweighted (`w == -1`), it is assigned the default weight `j`. The weight is then updated to `k * w + 1`.
-
-  - If the new calculated distance from the starting cell `(sx, sy)` to the neighboring cell `(x, y)` is shorter than the currently known distance, the following updates occur:
-    - `distance[x][y]` is updated to the new shorter distance.
-    - `trace[x][y]` is updated to store the direction to reach `(x, y)` from the current cell `(u, v)`.
-    - The neighboring cell `(x, y)` is added back to the priority queue for further exploration.
+- So the total cost = `s + k * Σ(weight(xi, yi))` where `x(s), y(s) = ex, ey` ; `x1, y1 = sx, sy`
+> However this form cannot use in the Dijkstra Algorithm.
+- But `s + k * Σ(weight(xi, yi))` equivalent with `Σ(1 + k * weight(xi, yi))` 
+> The weight of each cell is transformed to `1 + k * original weight`
     
 ### 3. Path Tracing:
 - After Dijkstra's algorithm finds the optimal path, it needs to be traced back from the destination to the starting point.
