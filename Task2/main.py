@@ -57,7 +57,7 @@ def main():
     u, v = ex, ey
     path.append((u, v))
     while True:
-        dir = trace[x][y]
+        dir = trace[u][v]
         x = u + dx[dir]
         y = v + dy[dir]
         u, v = x , y
@@ -67,7 +67,7 @@ def main():
 
 
     # Output
-    print(distance[ex][ey])
+    print(len(path))
     for cell in path[::-1]:
         print(cell[0], cell[1])
 
