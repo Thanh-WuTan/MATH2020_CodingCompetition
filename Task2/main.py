@@ -2,10 +2,6 @@ import sys
 import numpy as np
 import heapq as hq
 
-
-sys.stdin = open('sample_task2.inp', 'r')
-sys.stdout = open('sample_task2.out', 'w')
-
 def main():    
     n, m, k =  map(int,(input().split()))
 
@@ -73,5 +69,8 @@ def main():
     print(distance[ex][ey])
     for cell in path[::-1]:
         print(cell[0], cell[1])
-    
+
+
+sys.stdin = open('sample_task2.inp', 'r')
+sys.stdout = open('sample_task2.out', 'w') 
 main()
