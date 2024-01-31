@@ -85,6 +85,7 @@ def main():
         if found == True:
             break 
     # Trace the path
+    assert(found == True)
     path = [] 
     u, v = ex, ey
     path.append((u, v))
