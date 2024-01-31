@@ -42,6 +42,7 @@ def main():
     j, k = map(int, (input().split()))
     avg+= (n * m - h - l) * j
     avg//= (n * m)
+
     # A* search
     open_list = [(0, (sx, sy))]
     isinopenlist = create_array(False, n, m)
@@ -65,7 +66,7 @@ def main():
             if w == -1:
                 w = j
             w = 1 + k * w
-            newg =  g[u][v] + w
+            newg = current_f + w
             newh = calculatehHvalue(x, y, ex, ey, avg)
             newf = newg + newh
 
