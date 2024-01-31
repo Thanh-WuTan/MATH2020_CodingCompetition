@@ -99,6 +99,7 @@ def main():
 
 
     # Output
+
     print(len(path)) 
     for cell in path[::-1]:
         print(cell[0], cell[1])
