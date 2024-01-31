@@ -44,10 +44,9 @@ def main():
     avg//= (n * m)
 
     # A* search
-    open_list = [(0, (sx, sy))]
-    isinopenlist = create_array(False, n, m)
+    open_list = [(0, (sx, sy))] 
     isclosed = create_array(False, n, m)
-    isinopenlist[sx][sy] = True
+    
     found = False
     while open_list:
         current_f, current_cell = hq.heappop(open_list)
