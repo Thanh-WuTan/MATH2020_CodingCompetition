@@ -11,5 +11,4 @@ This task involves a grid with cells assigned weights. The objective is to deter
 ## Task 3: Coloring Vertex and Optimization
 (Note: to be updated.)
 
-# Scoreboard
-The scoreboard is available at: https://dangkh.github.io
+ 
